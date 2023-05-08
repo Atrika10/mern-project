@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs'); // for generating hash with salt
 const jwt = require('jsonwebtoken'); // for generating web token
 
 const User =  require('../models/User');
+const fetchuser = require('../middleware/fetchuser');
 const router = express.Router();
 
 const JWT_SECRET = 'atrika@show';
@@ -106,4 +107,17 @@ router.post('/login', [
         res.status(500).send("internal server Error");
     }
 })
+
+// ROUTE : 3 Get loggedin User Details using : POST "api/auth/getuser". Login required
+router.post('/getuser',fetchuser, async (req, res)=>{
+    try {
+        userId = req.user.id;
+        const user = await User.findById(userId).select("-password")
+        res.send(user)
+    }  catch (error) {
+        console.log(error.message);
+        res.status(500).send("internal server Error");
+    }
+});
+
 module.exports = router;
