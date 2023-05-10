@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ion-icon{
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+.icons ion-icon:first-child:hover {
+  color: green;
+
+}
+.icons ion-icon:last-child:hover {
+  color: red;
+
+}
