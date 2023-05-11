@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import noteContext from '../Context/notes/noteContext';
 
 export default function Noteitem(props) {
+    const context = useContext(noteContext);
+    const {deleteNote} = context;
     const {note} = props;
   return (
     <div className="col-md-3">
@@ -12,7 +15,7 @@ export default function Noteitem(props) {
             <div className="card-header bg-transparent border-success">{note.title}</div>
             <div className="icons"> 
             <ion-icon name="create"></ion-icon>
-            <ion-icon name="trash"></ion-icon>
+            <ion-icon name="trash" onClick={()=>{deleteNote(note._id)}}></ion-icon>
             </div>
         </div>
         <div className="card-body text-success">
