@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
-export default function Login() {
+export default function Login(props) {
+  const {showAlert} = props;
   const [credentials, setCredentials] =  useState({email: "", password : ""});
   let history =  useNavigate();
   const handleSubmit = async (e)=>{
@@ -21,6 +22,9 @@ export default function Login() {
         // save the auth token & redirect
         localStorage.setItem('token', json.authtoken);
         history("/home");
+        showAlert("Loggedin successfully", "success");
+      }else{
+        showAlert("Invalid Details", "danger");
       }
   }
 
@@ -38,9 +42,7 @@ export default function Login() {
             <label htmlFor="password" className="form-label">Password</label>
             <input type="password" className="form-control" id="password" name='password' value={credentials.password} onChange={onchange} />
           </div>
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-          </div>
+          
           <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>

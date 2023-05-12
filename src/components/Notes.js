@@ -4,7 +4,8 @@ import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
 import { useRef } from "react";
 
-export default function Notes() {
+export default function Notes(props) {
+  const {showAlert} = props;
   const context = useContext(noteContext);
   console.log(context);
   const { notes, getAllNote, editNote } = context;
@@ -29,11 +30,13 @@ export default function Notes() {
     ref.current.click();
     // to populate value on each field
     setNote({id : currentNote._id,etitle: currentNote.title, edescription : currentNote.description, etag : currentNote.tag});
+   
   };
  
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
+    showAlert("Notes updated Successfully", "success");
     console.log("updating the note", note)
   };
   const onchange = (e) => {
@@ -41,7 +44,7 @@ export default function Notes() {
   };
   return (
     <>
-      <Addnote />
+      <Addnote showAlert={showAlert}/>
       <button ref={ref}
         type="button"
         className="btn btn-primary d-none"
@@ -117,7 +120,7 @@ export default function Notes() {
               >
                 Close
               </button>
-              <button disabled = {note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">
+              <button  disabled = {note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">
               Update Note
               </button>
             </div>
@@ -131,7 +134,7 @@ export default function Notes() {
         </div>
         {notes.map((note) => {
           return (
-            <Noteitem key={note._id} updateNote={updateNote} note={note} />
+            <Noteitem key={note._id} updateNote={updateNote} note={note} showAlert={showAlert}/>
           );
         })}
       </div>
