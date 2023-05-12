@@ -76,7 +76,7 @@ export default function Notes() {
           <div className="mb-3">
             <label htmlFor="title" className="form-label">Title </label>
             <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle}
-              aria-describedby="emailHelp"
+              minLength={5} required aria-describedby="emailHelp"
               onChange={onchange}
             />
           </div>
@@ -89,6 +89,7 @@ export default function Notes() {
               className="form-control"
               id="edescription"
               name="edescription" value={note.edescription}
+              minLength={5} required
               onChange={onchange}
             />
           </div>
@@ -100,7 +101,7 @@ export default function Notes() {
               type="text"
               className="form-control"
               id="etag"
-              name="etag"  value={note.etag}
+              name="etag"  value={note.etag} minLength={3} required
               onChange={onchange}
             />
           </div>
@@ -116,7 +117,7 @@ export default function Notes() {
               >
                 Close
               </button>
-              <button onClick={handleClick} type="button" className="btn btn-primary">
+              <button disabled = {note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">
               Update Note
               </button>
             </div>
@@ -125,6 +126,9 @@ export default function Notes() {
       </div>
       <div className="row my-3">
       <h2> Your note</h2>
+        <div className="mx-2"> 
+        {notes.length === 0 && "No notes available"}
+        </div>
         {notes.map((note) => {
           return (
             <Noteitem key={note._id} updateNote={updateNote} note={note} />

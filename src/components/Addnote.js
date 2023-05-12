@@ -8,11 +8,12 @@ export default function Addnote() {
   const [note, setNote] = useState({
     title: "",
     description: "",
-    tag: "default",
+    tag: "",
   });
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    setNote({title:"", description: "", tag : ""});
   };
   const onchange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -25,7 +26,7 @@ export default function Addnote() {
           <div className="mb-3">
             <label htmlFor="title" className="form-label">Title </label>
             <input type="text" className="form-control" id="title" name="title"
-              aria-describedby="emailHelp"
+              aria-describedby="emailHelp" minLength={5} required value={note.title}
               onChange={onchange}
             />
           </div>
@@ -38,6 +39,7 @@ export default function Addnote() {
               className="form-control"
               id="description"
               name="description"
+              minLength={5} required value={note.description}
               onChange={onchange}
             />
           </div>
@@ -49,13 +51,14 @@ export default function Addnote() {
               type="text"
               className="form-control"
               id="tag"
-              name="tag"
+              name="tag" minLength={3} required value={note.tag}
               onChange={onchange}
             />
           </div>
 
           <button
             type="submit"
+            disabled = {note.title.length<5 || note.description.length<5}
             className="btn btn-primary"
             onClick={handleClick}
           >
