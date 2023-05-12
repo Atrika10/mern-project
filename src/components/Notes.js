@@ -7,28 +7,33 @@ import { useRef } from "react";
 export default function Notes() {
   const context = useContext(noteContext);
   console.log(context);
-  const { notes, getAllNote } = context;
+  const { notes, getAllNote, editNote } = context;
 
   useEffect(() => {
     getAllNote();
     // eslint-disable-next-line
   }, []);
 
-  const updateNote = (currentNote) => {
-    console.log("clicked");
-    ref.current.click();
-    // to populate value on each field
-    setNote({etitle: currentNote.title, edescription : currentNote.description, etag : currentNote.tag});
-  };
   const ref = useRef(null);
+  const refClose = useRef(null);
 
   const [note, setNote] = useState({
+    id : "",
     etitle: "",
     edescription: "",
     etag: "default",
   });
+
+  const updateNote = (currentNote) => {
+    console.log("clicked");
+    ref.current.click();
+    // to populate value on each field
+    setNote({id : currentNote._id,etitle: currentNote.title, edescription : currentNote.description, etag : currentNote.tag});
+  };
+ 
   const handleClick = (e) => {
-    e.preventDefault();
+    editNote(note.id, note.etitle, note.edescription, note.etag);
+    refClose.current.click();
     console.log("updating the note", note)
   };
   const onchange = (e) => {
@@ -104,7 +109,7 @@ export default function Notes() {
         </form>
             </div>
             <div className="modal-footer">
-              <button
+              <button ref={refClose}
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
