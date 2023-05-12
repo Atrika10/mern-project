@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
   const [credentials, setCredentials] =  useState({email: "", password : ""});
+  let history =  useNavigate();
   const handleSubmit = async (e)=>{
     e.preventDefault();
     // http://localhost:5000/api/auth/login
@@ -13,8 +15,13 @@ export default function Login() {
         },
         body: JSON.stringify({email : credentials.email, password : credentials.password}),
       });
-      const note = await response.json();
-      console.log(note)
+      const json = await response.json();
+      console.log(json);
+      if(json.success){
+        // save the auth token & redirect
+        localStorage.setItem('token', json.authtoken);
+        history("/home");
+      }
   }
 
   const onchange = (e) => {
