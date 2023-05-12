@@ -4,17 +4,17 @@ import noteContext from '../Context/notes/noteContext';
 export default function Noteitem(props) {
     const context = useContext(noteContext);
     const {deleteNote} = context;
-    const {note} = props;
+    const {note, updateNote} = props;
   return (
     <div className="col-md-3">
       {/* {note.title + " "}
       {note.tag + " "}
       {note.description}; */}
-      <div className="card border-success mb-3" style={{"maxwidth": "18rem"}}>
+      <div className="card border-success mb-3" style={{"maxwidth": "20rem"}}>
         <div className="d-flex align-items-center"> 
             <div className="card-header bg-transparent border-success">{note.title}</div>
             <div className="icons"> 
-            <ion-icon name="create"></ion-icon>
+            <ion-icon name="create" onClick= {()=>{updateNote(note)}}></ion-icon>
             <ion-icon name="trash" onClick={()=>{deleteNote(note._id)}}></ion-icon>
             </div>
         </div>

@@ -4,7 +4,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import NoteState from './Context/notes/NoteState';
-import Alert from './components/Alert';
+// import Alert from './components/Alert';
 // eslint-disable-next-line
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
     <NoteState> 
       <Router> 
       <Navbar/>
-      <Alert message="fine"/>
+      {/* <Alert message="fine"/> */}
       <div className="container"> 
         <Routes> 
         <Route exact path="/home" element={<Home/>}/>
