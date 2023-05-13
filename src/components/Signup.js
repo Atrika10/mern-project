@@ -32,6 +32,7 @@ export default function Signup(props) {
   };
   return (
     <div className='conainer my-3' >
+      <h2>Create an account to keep your note on the cloud</h2>
       <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>

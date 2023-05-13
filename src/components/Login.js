@@ -36,6 +36,7 @@ export default function Login(props) {
   };
   return (
     <div className='conainer my-3' >
+      <h2>Login to access your notes</h2>
       <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
