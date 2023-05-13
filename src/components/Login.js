@@ -20,7 +20,10 @@ export default function Login(props) {
       console.log(json);
       if(json.success){
         // save the auth token & redirect
-        localStorage.setItem('token', json.authtoken);
+        localStorage.setItem('token', json.authToken);
+        console.log(localStorage.getItem('token')+ " check");
+        console.log( json.authToken + " this is-------------");
+
         history("/home");
         showAlert("Loggedin successfully", "success");
       }else{
