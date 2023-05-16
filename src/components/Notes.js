@@ -69,8 +69,8 @@ export default function Notes(props) {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
-          <div className="modal-content">
+        <div className="modal-dialog cardBoxStyle">
+          <div className="modal-content cardBoxStyle">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
                 Add Note
@@ -118,7 +118,7 @@ export default function Notes(props) {
           </div>
 
        
-        </form>
+            </form>
             </div>
             <div className="modal-footer">
               <button ref={refClose}
@@ -136,7 +136,7 @@ export default function Notes(props) {
         </div>
       </div>
       <div className="row my-3">
-      <h2> Your note</h2>
+      <h2> Your Notes</h2>
         <div className="mx-2"> 
         {notes.length === 0 && "No notes available"}
         </div>

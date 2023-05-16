@@ -1,38 +1,42 @@
-.App {
-  text-align: center;
+:root{
+  --ref-color :#374151;
+  --bg-color :#111827;
+  --bg-ref-color:#1F2937;
+  --white-color : white;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-color: var(--bg-color);
+  outline: none;
+  color: var(--white-color);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container{
+  background-color: var(--bg-color);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.cssColor{
+  background-color: var(--ref-color) !important;
 }
-
-.App-link {
-  color: #61dafb;
+.fontColor{
+  color: white !important;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fontBold{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.lightWhite{
+  color: #908F8C;
+}
+.boxColor{
+  padding: 1rem;
+  width: 30rem;
+  min-width: 20rem;
+}
+.inputField{
+  background-color: rgb(221, 218, 218);
+}
+input::placeholder{
+  background-color: #374151 !important;
+  font-size: 10px;
+}
+.cardBoxStyle{
+  background-color: #374151;
 }

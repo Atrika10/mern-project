@@ -10,20 +10,20 @@ export default function Noteitem(props) {
       {/* {note.title + " "}
       {note.tag + " "}
       {note.description}; */}
-      <div className="card border-success mb-3" style={{"maxwidth": "20rem"}}>
+      <div className="card cardBoxStyle border-primary mb-3" >
         <div className="d-flex align-items-center"> 
-            <div className="card-header bg-transparent border-success">{note.title}</div>
-            <div className="icons"> 
+            <div className=" fontColor fontBold card-header bg-transparent border-primary">{note.title}</div>
+            <div className="fontColor icons"> 
             <ion-icon name="create" onClick= {()=>{updateNote(note)}}></ion-icon>
-            <ion-icon name="trash" onClick={()=>{deleteNote(note._id);showAlert("Notes deleted succesfully", "success");}}></ion-icon>
+            <ion-icon  name="trash" onClick={()=>{deleteNote(note._id);showAlert("Notes deleted succesfully", "success");}}></ion-icon>
             
             </div> 
         </div>
         <div className="card-body text-success">
             <h5 className="card-title"></h5>
-            <p className="card-text">{note.description} </p>
+            <p className=" fontColor card-text">{note.description} </p>
         </div>
-        <div className="card-footer bg-transparent border-success">{note.tag}</div>
+        <div className="fontColor card-footer bg-transparent border-primary">{note.tag}</div>
         </div>
     </div>
   )
