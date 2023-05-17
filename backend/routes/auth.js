@@ -57,7 +57,7 @@ router.post('/createuser', [
         let success = true;
         console.log(success,authToken);
     
-        res.json({authToken});
+        res.json({success, authToken});
         // res.json({user});
         // res.send(req.body);
         

@@ -21,6 +21,7 @@ export default function Noteitem(props) {
         </div>
         <div className="card-body text-success">
             <h5 className="card-title"></h5>
+             {/* eslint-disable-next-line */}
             <p className=" fontColor card-text">{note.description} </p>
         </div>
         <div className="fontColor card-footer bg-transparent border-primary">{note.tag}</div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 export default function Login(props) {
   const {showAlert} = props;
@@ -35,20 +35,23 @@ export default function Login(props) {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   return (
-    <div className='conainer my-3' >
-      <h2>Login to access your notes</h2>
-      <form onSubmit={handleSubmit}>
+    <>
+      <h2 className='text-center'>Login to access your notes</h2>
+      <div className='conainer my-3 d-flex justify-content-center' >
+      <form className='boxStyle my-4' onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address</label>
-            <input type="email" className="form-control" id="email" name='email' value={credentials.email} onChange={onchange} aria-describedby="emailHelp"/>
+            <label htmlFor="email" className="lightWhite form-label">Email address</label>
+            <input type="email" className="inputField form-control" id="email" name='email' value={credentials.email} onChange={onchange} aria-describedby="emailHelp"/>
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" className="form-control" id="password" name='password' value={credentials.password} onChange={onchange} />
+            <label htmlFor="password" className="lightWhite form-label">Password</label>
+            <input type="password" className="inputField form-control" id="password" name='password' value={credentials.password} onChange={onchange} />
           </div>
           
           <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
+    <h6 className='text-center'>Don't have an account ? <Link to="/signup">Signup </Link> </h6>
+    </>
   )
 }

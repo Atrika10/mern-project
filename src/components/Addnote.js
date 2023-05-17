@@ -22,23 +22,23 @@ export default function Addnote(props) {
   };
   return (
     <div>
-      <div className="container my-4">
+      <div className="container  my-4">
         <h2>Add a note</h2>
         <form className="my-4">
           <div className="mb-3">
-            <label htmlFor="title" className="form-label">Title </label>
-            <input type="text" className="form-control" id="title" name="title"
+            <label htmlFor="title" className="lightWhite fontBold form-label">Title </label>
+            <input type="text" className="inputField form-control" id="title" name="title"
               aria-describedby="emailHelp" minLength={5} required value={note.title}
               onChange={onchange}
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="description" className="form-label">
+            <label htmlFor="description" className="lightWhite fontBold form-label">
               Description
             </label>
             <input
               type="text"
-              className="form-control"
+              className="inputField form-control"
               id="description"
               name="description"
               minLength={5} required value={note.description}
@@ -46,12 +46,12 @@ export default function Addnote(props) {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="tag" className="form-label">
+            <label htmlFor="tag" className="lightWhite fontBold form-label">
               Tag
             </label>
             <input
               type="text"
-              className="form-control"
+              className="inputField form-control"
               id="tag"
               name="tag" minLength={3} required value={note.tag}
               onChange={onchange}
